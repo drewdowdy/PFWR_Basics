@@ -11,7 +11,32 @@ def valid_number?(num)
   num.to_i() != 0
 end
 
-prompt("Welcome to Calculator")
+def operation_to_message(op)
+  case op
+  when '1'
+    "Adding"
+  when '2'
+    "Subtracting"
+  when '3'
+    "Multiplying"
+  when '4'
+    "Dividing"
+  end
+end
+
+prompt("Welcome to Calculator! Please enter your name:")
+
+name = ''
+loop do
+  name = Kernel.gets().chomp()
+  if name.empty?()
+    prompt("Be sure to input a valid name.")
+  else
+    break
+  end
+end
+
+prompt("Hi, #{name}!")
 
 loop do #main loop
 
@@ -37,8 +62,27 @@ loop do #main loop
     end
   end
 
-  prompt("What operation would you like to perform? 1) add 2) subtract 3) multiply 4) divide")
-  operator = Kernel.gets().chomp()
+  operator_prompt = <<-MSG
+    What operation would you like to perform?
+    1) add
+    2) subtract
+    3) multiply
+    4) divide
+  MSG
+  prompt(operator_prompt)
+
+  operator = ''
+  loop do
+    operator = Kernel.gets().chomp()
+    if %w(1 2 3 4).include?(operator) # %w() creates an array of strings
+      break
+    else
+      prompt("Must choose 1, 2, 3, or 4.")
+    end
+  end
+  
+  prompt("#{operation_to_message(operator)} the two numbers...")
+  sleep(1) # pauses for 1 second
 
   result = case operator
     when '1'
@@ -56,4 +100,6 @@ loop do #main loop
   answer = Kernel.gets().chomp()
   break unless answer.downcase.start_with?('y')
 end
+
+sleep(1) # pauses for 1 second
 prompt("Thank you for using calculator. Good-bye!")
