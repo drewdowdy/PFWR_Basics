@@ -74,4 +74,10 @@ Define a method that:
   -Merges the two arrays together
     -At the even indexes of the new array will be the elements of the first array
     -At the odd indexes of the new array will be the elements of the second array
+
 >>Formal:
+START
+SET array1 = some numbers
+SET array2 = some numbers
+DEF a method 'merge'
+  
