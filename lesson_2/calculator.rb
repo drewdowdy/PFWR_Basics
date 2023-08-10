@@ -28,7 +28,7 @@ def number?(n)
 end
 
 def operation_to_message(op)
-  case op
+  x = case op
     when '1'
       messages("adding", LANGUAGE)
     when '2'
@@ -38,7 +38,7 @@ def operation_to_message(op)
     when '4'
       messages("dividing", LANGUAGE)
   end
- # <--Need to state the variable as the last line of the method if we modify the method
+  x
 end
 
 prompt(messages('welcome', LANGUAGE))
