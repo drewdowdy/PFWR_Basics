@@ -55,7 +55,7 @@ end
 
 prompt(messages("name_greet", LANGUAGE) + "#{name}!")
 
-loop do #main loop
+loop do # main loop
 
   number1 = ''
   loop do
