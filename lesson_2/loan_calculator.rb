@@ -32,8 +32,7 @@ loop do
       prompt("Please input a valid number.")
     end
   end
-  monthly_percent = (apr.to_f/12)/100
-
+  monthly_percent = (apr.to_f / 12) / 100
 
   years_duration = ''
   loop do
@@ -48,7 +47,7 @@ loop do
   month_duration = years_duration.to_i * 12
 
   prompt("Calculating monthly payments...")
-  sleep (1)
+  sleep(1)
 
   montly_payment = loan_amount * (monthly_percent / (1 - (1 + monthly_percent)**(-month_duration)))
 
@@ -58,5 +57,5 @@ loop do
   break unless answer.downcase.start_with?('y')
 end
 
-sleep (1)
+sleep(1)
 prompt("Thank you for using Loan Calculator! Goodbye!")
