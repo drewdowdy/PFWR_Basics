@@ -1,5 +1,5 @@
-def valid_number?(num)
-  num.to_i.to_s == num
+def valid_number?(n)
+  n.to_i.to_s == n || n.to_f.to_s == n
 end
 
 def prompt(message)
