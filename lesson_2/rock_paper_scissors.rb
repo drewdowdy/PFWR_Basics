@@ -16,13 +16,13 @@ def display_results(player, computer)
   if (player == 'rock' && computer == 'scissors') ||
   (player == 'paper' && computer == 'rock') ||
   (player == 'scissors' && computer == 'paper')
-    prompt('You won! 🎉')
+    prompt('You won! 🥳')
   elsif (player == 'rock' && computer == 'paper') ||
   (player == 'paper' && computer == 'scissors') ||
   (player == 'scissors' && computer == 'rock')
-    prompt('Computer won.. 😔')
+    prompt('Computer won.. 😥')
   else
-    prompt("It's a tie! 🤝")
+    prompt("It's a tie! 😐")
   end
 end
 
