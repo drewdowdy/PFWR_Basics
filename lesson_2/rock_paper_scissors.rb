@@ -56,34 +56,28 @@ def display_results(player, computer)
   end
 end
 
-loop do
+prompt("First player to 3 is the grand winner!")
+
+human_score = 0
+computer_score = 0
+
+loop do #main loop
   choice = ''
   loop do
     prompt("Choose one: #{VALID_CHOICES.join(', ')}")
     prompt('(r = rock, p = paper, sc = scissors, l = lizard, sp = spock)')
     choice = gets.chomp.downcase
-    
-    if choice == 'r'
-      choice = 'rock'
-    elsif choice == 'p' 
-      choice = 'paper'
-    elsif choice == 'sc' 
-      choice = 'scissors'
-    elsif choice == 'l' 
-      choice = 'lizard'
-    elsif choice == 'sp' 
-      choice = 'spock'
-    else 
-      prompt("That's not a valid choice.")
+
+    case choice
+    when 'r' then choice = 'rock'
+    when 'p' then choice = 'paper'
+    when 'sc' then choice = 'scissors'
+    when 'l' then choice = 'lizard'
+    when 'sp' then choice = 'spock'
+    else prompt("That's not a valid choice.")
     end
-    
+
     break if VALID_CHOICES.include?(choice)
-    
-    # if VALID_CHOICES.include?(choice)
-    #   break
-    # else
-    #   prompt("That's not a valid choice.")
-    # end
   end
 
   sleep(1)
@@ -93,18 +87,27 @@ loop do
   prompt("You chose: #{choice}; Computer chose: #{computer_choice}")
 
   sleep(1)
-  
-  if win?(choice, computer_choice)  
+
+  if win?(choice, computer_choice)
     prompt(defeat_message(choice, computer_choice))
-  else win?(computer_choice, choice)
+    human_score += 1
+  elsif win?(computer_choice, choice)
     prompt(defeat_message(computer_choice, choice))
+    computer_score += 1
   end
 
   display_results(choice, computer_choice)
 
-  prompt('Do you want to play again? (Y to play again)')
-  answer = gets.chomp
-  break unless answer.downcase.start_with?('y')
+  sleep(1)
+
+  prompt("Human Score: #{human_score}; Computer Score: #{computer_score}")
+
+  sleep(1)
+
+  break if human_score == 3 || computer_score == 3
 end
 
-prompt('Thank you for playing. Goodbye!')
+sleep(1)
+
+prompt("CONGRATULATIONS! You're the grand winner!") if human_score == 3
+prompt('GAME OVER. Better luck next time..') if computer_score == 3
