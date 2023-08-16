@@ -60,13 +60,30 @@ loop do
   choice = ''
   loop do
     prompt("Choose one: #{VALID_CHOICES.join(', ')}")
-    choice = gets.chomp
-
-    if VALID_CHOICES.include?(choice)
-      break
-    else
+    prompt('(r = rock, p = paper, sc = scissors, l = lizard, sp = spock)')
+    choice = gets.chomp.downcase
+    
+    if choice == 'r'
+      choice = 'rock'
+    elsif choice == 'p' 
+      choice = 'paper'
+    elsif choice == 'sc' 
+      choice = 'scissors'
+    elsif choice == 'l' 
+      choice = 'lizard'
+    elsif choice == 'sp' 
+      choice = 'spock'
+    else 
       prompt("That's not a valid choice.")
     end
+    
+    break if VALID_CHOICES.include?(choice)
+    
+    # if VALID_CHOICES.include?(choice)
+    #   break
+    # else
+    #   prompt("That's not a valid choice.")
+    # end
   end
 
   sleep(1)
@@ -77,7 +94,7 @@ loop do
 
   sleep(1)
   
-  if win?(choice, computer_choice)
+  if win?(choice, computer_choice)  
     prompt(defeat_message(choice, computer_choice))
   else win?(computer_choice, choice)
     prompt(defeat_message(computer_choice, choice))
