@@ -21,25 +21,25 @@ def win?(first, second)
 end
 
 def defeat_message(choice1, choice2)
-  if (choice1 == 'rock' && choice2 == 'lizard') || (choice2 == 'rock' && choice1 == 'lizard')
-    'Rock crushes lizard.' 
-  elsif (choice1 == 'rock' && choice2 == 'scissors') || (choice2 == 'rock' && choice1 == 'scissors')
+  if choice1 == 'rock' && choice2 == 'lizard'
+    'Rock crushes lizard.'
+  elsif choice1 == 'rock' && choice2 == 'scissors'
     'Rock crushes scissors.'
-  elsif (choice1 == 'paper' && choice2 == 'rock') || (choice2 == 'paper' && choice1 == 'rock')
+  elsif choice1 == 'paper' && choice2 == 'rock'
     'Paper covers rock.'
-  elsif (choice1 == 'paper' && choice2 == 'spock') || (choice2 == 'paper' && choice1 == 'spock')
+  elsif choice1 == 'paper' && choice2 == 'spock'
     'Paper disproves Spock.'
-  elsif (choice1 == 'scissors' && choice2 == 'paper') || (choice2 == 'scissors' && choice1 == 'paper')
+  elsif choice1 == 'scissors' && choice2 == 'paper'
     'Scissors cuts paper.'
-  elsif (choice1 == 'scissors' && choice2 == 'lizard') || (choice2 == 'scissors' && choice1 == 'lizard')
+  elsif choice1 == 'scissors' && choice2 == 'lizard'
     'Scissors decapitates lizard.'
-  elsif (choice1 == 'lizard' && choice2 == 'spock') || (choice2 == 'lizard' && choice1 == 'spock')
+  elsif choice1 == 'lizard' && choice2 == 'spock'
     'Lizard poisons Spock.'
-  elsif (choice1 == 'lizard' && choice2 == 'paper') || (choice2 == 'lizard' && choice1 == 'paper')
+  elsif choice1 == 'lizard' && choice2 == 'paper'
     'Lizard eats paper.'
-  elsif (choice1 == 'spock' && choice2 == 'rock') || (choice2 == 'spock' && choice1 == 'rock')
+  elsif choice1 == 'spock' && choice2 == 'rock'
     'Spock vaporizes rock.'
-  elsif (choice1 == 'spock' && choice2 == 'scissors') || (choice2 == 'spock' && choice1 == 'scissors')
+  elsif choice1 == 'spock' && choice2 == 'scissors'
     'Spock smashes scissors.'
   else
     'Nothing happened..'
@@ -76,8 +76,12 @@ loop do
   prompt("You chose: #{choice}; Computer chose: #{computer_choice}")
 
   sleep(1)
-
-  prompt(defeat_message(choice, computer_choice))
+  
+  if win?(choice, computer_choice)
+    prompt(defeat_message(choice, computer_choice))
+  else win?(computer_choice, choice)
+    prompt(defeat_message(computer_choice, choice))
+  end
 
   display_results(choice, computer_choice)
 
