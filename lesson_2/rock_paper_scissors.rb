@@ -69,11 +69,11 @@ loop do #main loop
     choice = gets.chomp.downcase
 
     case choice
-    when 'r' then choice = 'rock'
-    when 'p' then choice = 'paper'
-    when 'sc' then choice = 'scissors'
-    when 'l' then choice = 'lizard'
-    when 'sp' then choice = 'spock'
+    when 'r', 'rock' then choice = 'rock'
+    when 'p', 'paper' then choice = 'paper'
+    when 'sc', 'scissors' then choice = 'scissors'
+    when 'l', 'lizard' then choice = 'lizard'
+    when 'sp', 'spock' then choice = 'spock' 
     else prompt("That's not a valid choice.")
     end
 
@@ -107,7 +107,7 @@ loop do #main loop
   break if human_score == 3 || computer_score == 3
 end
 
-sleep(1)
+sleep(0.5)
 
 prompt("CONGRATULATIONS! You're the grand winner!") if human_score == 3
 prompt('GAME OVER. Better luck next time..') if computer_score == 3
