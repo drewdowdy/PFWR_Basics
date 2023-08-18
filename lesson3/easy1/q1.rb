@@ -6,3 +6,5 @@ puts numbers # puts on an array prints each element on a new line
 # => 2
 # => 2
 # => 3
+
+# 'p' is the same as 'puts array.inspect'
